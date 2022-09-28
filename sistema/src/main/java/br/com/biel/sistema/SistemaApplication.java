@@ -8,7 +8,9 @@ public class SistemaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaApplication.class, args);
-		System.out.println("iifgghhghgh");
+
+
+		System.out.println("ii");
 	}
 
 }
