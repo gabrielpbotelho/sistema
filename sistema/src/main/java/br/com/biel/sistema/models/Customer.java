@@ -5,6 +5,7 @@ import org.springframework.lang.NonNull;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Customer {
@@ -15,7 +16,6 @@ public class Customer {
 
     @NonNull
     private String name;
-
     private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
@@ -62,9 +62,17 @@ public class Customer {
         return birth;
     }
 
+    public String getBirthDate() {
+        DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return birth.format(formatadorBarra);
+    }
+
+
     public void setBirth(LocalDate birth) {
         this.birth = birth;
     }
+
+
 
     public StatusGender getGender() {
         return gender;
@@ -93,6 +101,17 @@ public class Customer {
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
+    public String getCreationDateTime() {
+        DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        return creationDate.format(formatoBr) ;
+    }
+
+    //DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern(mascara);
+    //LocalDateTime dataAgora = localDateTime;
+    //String dataFormatada = dataAgora.format(formatoBr);
+    //return dataFormatada;
+
+    //"dd/MM/yyyy HH:mm:ss";
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
