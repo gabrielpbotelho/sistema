@@ -34,10 +34,10 @@
                 <tr th:each="customer : ${customers}">
                     <th class="col-1" scope="row" th:text="${customer.id}"></th>
                     <th class="col-1" scope="row" th:text="${customer.name}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.gender.toString()}"></th>
+                    <th class="col-1" scope="row" th:text="${customer.getStatusGender}"></th>
                     <th class="col-1" scope="row" th:text="${customer.cpf}"></th>
                     <th class="col-1" scope="row" th:text="${customer.email}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.birthDate}"></th>
+                    <th class="col-1" scope="row" th:text="${customer.birth}"></th>
                     <th class="col-1" scope="row" th:text="${customer.creationDateTime}"></th>
                     <td class="col-1"><a href="#">Detalhes<a/></td>
                     <td class="col-1"><a href="#">Editar<a/></td>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="row">
-        <a href="#">Novo Cliente</a>
+        <a href="/customer/new">Novo Cliente</a>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

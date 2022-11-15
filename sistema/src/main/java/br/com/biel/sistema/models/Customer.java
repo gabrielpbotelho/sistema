@@ -14,28 +14,28 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NonNull
+    //@NonNull
     private String name;
-    private LocalDate birth;
+    private String birth;
 
     @Enumerated(EnumType.STRING)
-    private StatusGender gender;
+    private StatusGender statusGender;
 
     private String email;
 
-    @NonNull
-    private int cpf;
+    //@NonNull
+    private String cpf;
 
     private LocalDateTime creationDate;
 
     public Customer() {
     }
 
-    public Customer(@NonNull String name, LocalDate birth, StatusGender gender, String email, int cpf,
+    public Customer(@NonNull String name, String birth, StatusGender statusGender, String email, String cpf,
                     LocalDateTime creationDate) {
         this.name = name;
         this.birth = birth;
-        this.gender = gender;
+        this.statusGender = statusGender;
         this.email = email;
         this.cpf = cpf;
         this.creationDate = creationDate;
@@ -58,28 +58,28 @@ public class Customer {
         this.name = name;
     }
 
-    public LocalDate getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public String getBirthDate() {
-        DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return birth.format(formatadorBarra);
-    }
+    //public String getBirthDate() {
+    //    DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    //    return birth.format(formatadorBarra);
+    //}
 
 
-    public void setBirth(LocalDate birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 
 
 
-    public StatusGender getGender() {
-        return gender;
+    public StatusGender getStatusGender() {
+        return statusGender;
     }
 
-    public void setGender(StatusGender gender) {
-        this.gender = gender;
+    public void setStatusGender(StatusGender statusGender) {
+        this.statusGender = statusGender;
     }
 
     public String getEmail() {
@@ -90,11 +90,11 @@ public class Customer {
         this.email = email;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
