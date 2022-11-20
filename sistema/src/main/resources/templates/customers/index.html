@@ -31,17 +31,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="customer : ${customers}">
-                    <th class="col-1" scope="row" th:text="${customer.id}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.name}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.getStatusGender}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.cpf}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.email}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.birth}"></th>
-                    <th class="col-1" scope="row" th:text="${customer.creationDateTime}"></th>
-                    <td class="col-1"><a href="#">Detalhes<a/></td>
+                <tr th:each="customerDTO : ${customerDTOList}">
+                    <th class="col-1" scope="row" th:text="${customerDTO.id}"></th>
+                    <th class="col-1" scope="row" th:text="${customerDTO.name}"></th>
+                    <th class="col-1" scope="row" th:text="${customerDTO.getStatusGender}"></th>
+                    <th class="col-1" scope="row" th:text="${customerDTO.cpf}"></th>
+                    <th class="col-1" scope="row" th:text="${customerDTO.email}"></th>
+                    <th class="col-1" scope="row" th:text="${customerDTO.birth}"></th>
+                    <th class="col-1" scope="row" th:text="${customerDTO.creationDate}"></th>
+                    <td class="col-1"><a th:href="@{/customers/{customerDTOId}(customerDTOId = ${customerDTO.id})}">Detalhes<a/></td>
                     <td class="col-1"><a href="#">Editar<a/></td>
-                    <td class="col-1"><a href="#">Deletar<a/></td>
+                    <td class="col-1"><a th:href="@{/customers/{customerDTOId}/delete(customerDTOId = ${customerDTO.id})}">Deletar<a/></td>
                 </tr>
                 </tbody>
             </table>
