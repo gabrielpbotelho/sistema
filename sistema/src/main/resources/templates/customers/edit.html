@@ -1,0 +1,68 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
+
+    <title>Editando Customer</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>Editando Customer</h1>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <form th:object="${customerDTO}" action="/customers" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Id</label>
+                    <input class="form-control" type="text" th:field="*{id}">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nome</label>
+                    <input class="form-control" type="text" th:field="*{name}">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nascimento</label>
+                    <input class="form-control" type="text" th:field="*{birth}">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">E-mail</label>
+                    <input class="form-control" type="text" th:field="*{email}">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">CPF</label>
+                    <input class="form-control" type="text"  th:field="*{cpf}">
+                    <div></div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gênero</label>
+                    <select class="form-select"th:field="*{statusGender}">
+                        <option th:each="gender : ${statusGender}"
+                                th:value="${gender}" th:text="${gender}"></option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Submeter</button>
+                <a href="javascript:history.back()">Voltar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"/>
+
+</body>
+</html>

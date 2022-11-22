@@ -6,17 +6,22 @@ import java.time.format.DateTimeFormatter;
 public class DateUtils {
 
     public static String localDate4String(LocalDate localDate, String mascara) {
+        if(localDate == null){
+            return null;
+        }
+            DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern(mascara);
+            String dataEditada = localDate.format(formatadorBarra);
 
-        DateTimeFormatter formatadorBarra = DateTimeFormatter.ofPattern(mascara);
-        String dataEditada = localDate.format(formatadorBarra);
+            return dataEditada;
 
-        return dataEditada;
     }
 
     final static String FORMATO_NORMAL = "yyyy/MM/dd";
 
     public static LocalDate string4LocalDate(String data, String mascara) {
-
+        if (data == null) {
+            return null;
+        }
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern(mascara);
         LocalDate localDate = LocalDate.parse(data, formato);
@@ -27,7 +32,9 @@ public class DateUtils {
     //DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
     public static String localDateTime4String(LocalDateTime localDateTime, String mascara) {
-
+        if (localDateTime == null) {
+            return null;
+        }
         //LocalDateTime para String
         DateTimeFormatter formatoBr = DateTimeFormatter.ofPattern(mascara);
         LocalDateTime dataAgora = localDateTime;
@@ -38,7 +45,9 @@ public class DateUtils {
     }
     public static LocalDateTime string4LocalDateTime(String data, String mascara) {
         //String para LocalDateTime
-
+        if (data == null) {
+            return null;
+        }
         DateTimeFormatter formato = DateTimeFormatter.ofPattern(mascara);
         LocalDateTime localDateTime  = LocalDateTime.parse(data, formato);
         System.out.println(localDateTime);
@@ -56,7 +65,9 @@ public class DateUtils {
 
     public static LocalDateTime string4LocalDateT(String data) {
         //String para LocalDateTime
-
+        if (data == null) {
+            return null;
+        }
         LocalDateTime localDateTime  = LocalDateTime.parse(data);
         System.out.println(localDateTime);
         return localDateTime;

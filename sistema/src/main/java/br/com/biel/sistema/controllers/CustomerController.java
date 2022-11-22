@@ -8,10 +8,7 @@ import br.com.biel.sistema.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.websocket.server.PathParam;
@@ -26,7 +23,7 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
 
-    @GetMapping("")
+    @GetMapping
     public ModelAndView index() {
 
         List<Customer> customers = this.customerRepository.findAll();
@@ -57,7 +54,6 @@ public class CustomerController {
         return index();
     }
 
-
     @GetMapping("/new")
     public ModelAndView nnew() {
 
@@ -67,7 +63,7 @@ public class CustomerController {
         return mv;
     }
 
-    @PostMapping("")
+    @PostMapping
     public String create(CustomerDTO customerDTO) {
 
         Customer customer = CustomerDTO.toCustomer(customerDTO);
@@ -77,6 +73,23 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @GetMapping("/{id}/edit")
+    public ModelAndView search4Edit (@PathVariable Long id) {
+        Optional<Customer> customerOptional = this.customerRepository.findById(id);
+        CustomerDTO customerDTO = Customer.toCustomerDTO(customerOptional.get());
+        ModelAndView mv = new ModelAndView("customers/edit");
+        mv.addObject("statusGender", StatusGender.values());
+        mv.addObject("customerDTO", customerDTO);
 
+        return mv;
+    }
+
+    @PutMapping
+    public String updateCustomer(CustomerDTO customerDTO) {
+        System.out.println(customerDTO);
+        //Customer customer = CustomerDTO.toCustomer(customerDTO);
+        //customerRepository.save(customer);
+        return "redirect:/customers";
+    }
 
 }
