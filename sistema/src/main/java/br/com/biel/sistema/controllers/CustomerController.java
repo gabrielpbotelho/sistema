@@ -4,14 +4,12 @@ import br.com.biel.sistema.dto.CustomerDTO;
 import br.com.biel.sistema.models.Customer;
 import br.com.biel.sistema.models.StatusGender;
 import br.com.biel.sistema.repositories.CustomerRepository;
-import br.com.biel.sistema.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.websocket.server.PathParam;
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +19,6 @@ import java.util.Optional;
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
-
 
     @GetMapping
     public ModelAndView index() {
@@ -36,8 +33,9 @@ public class CustomerController {
     }
 
     @GetMapping ("/{id}")
-    public ModelAndView details(@PathVariable Long id) {
+    public ModelAndView details(@PathVariable Integer id, HttpSession session) {
 
+        System.out.println(session);
         Optional<Customer> customer = this.customerRepository.findById(id);
         CustomerDTO customerDTO = Customer.toCustomerDTO(customer.get());
         System.out.println(customerDTO.getId());
@@ -47,8 +45,20 @@ public class CustomerController {
         return mv;
     }
 
+    /*@GetMapping ("/login/{email}") //caminho ou path
+    public ModelAndView login (@PathVariable String email , HttpSession session) { //metodo que acesso atraves do caminho ou path
+        List<Customer> customers = this.customerRepository.findAll();
+        List<CustomerDTO> customerDTOList = Customer.toCustomers(customers);
+        ModelAndView mv = new ModelAndView("customers/index"); //recebendo o caminho do templates no construtor
+        mv.addObject("customerDTOList", customerDTOList); // inserindo valores
+        //template + objeto = html
+        return mv; //devolve para o spring produzir o html que será exibido no navegador
+    }*/
+
+
+
     @GetMapping("/{id}/delete")
-    public ModelAndView delete(@PathVariable Long id) {
+    public ModelAndView delete(@PathVariable Integer id) {
 
         customerRepository.deleteById(id);
         return index();
@@ -74,7 +84,7 @@ public class CustomerController {
     }
 
     @GetMapping("/{id}/edit")
-    public ModelAndView search4Edit (@PathVariable Long id) {
+    public ModelAndView search4Edit (@PathVariable Integer id) {
         Optional<Customer> customerOptional = this.customerRepository.findById(id);
         CustomerDTO customerDTO = Customer.toCustomerDTO(customerOptional.get());
         ModelAndView mv = new ModelAndView("customers/edit");
@@ -87,8 +97,8 @@ public class CustomerController {
     @PutMapping
     public String updateCustomer(CustomerDTO customerDTO) {
         System.out.println(customerDTO);
-        //Customer customer = CustomerDTO.toCustomer(customerDTO);
-        //customerRepository.save(customer);
+        Customer customer = CustomerDTO.toCustomer(customerDTO);
+        customerRepository.save(customer);
         return "redirect:/customers";
     }
 

@@ -15,8 +15,9 @@ import java.util.List;
 public class Customer {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     //@NonNull
     private String name;
@@ -24,6 +25,7 @@ public class Customer {
     //@DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birth;
 
+    @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private StatusGender statusGender;
 
@@ -47,11 +49,11 @@ public class Customer {
         this.creationDate = creationDate;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -100,10 +102,6 @@ public class Customer {
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
-
-
-
-
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;

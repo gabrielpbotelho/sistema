@@ -11,7 +11,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <h1>Lista de Customers</h1>
+        <h1>Lista de orders</h1>
     </div>
     <div class="row">
         <div class="col-10">
@@ -19,29 +19,25 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Gênero</th>
-                    <th scope="col">CPF</th>
-                    <th scope="col">E-mail</th>
-                    <th scope="col">Nascimento</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Valor total</th>
                     <th scope="col">Data de criação</th>
+                    <!--th scope="col">Id do comprador</th-->
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="customerDTO : ${customerDTOList}">
-                    <th class="col-1" scope="row" th:text="${customerDTO.id}"></th>
-                    <th class="col-1" scope="row" th:text="${customerDTO.name}"></th>
-                    <th class="col-1" scope="row" th:text="${customerDTO.getStatusGender}"></th>
-                    <th class="col-1" scope="row" th:text="${customerDTO.cpf}"></th>
-                    <th class="col-1" scope="row" th:text="${customerDTO.email}"></th>
-                    <th class="col-1" scope="row" th:text="${customerDTO.birth}"></th>
-                    <th class="col-1" scope="row" th:text="${customerDTO.creationDate}"></th>
+                <tr th:each="orderTeste : ${orderTeste}">
+                    <th class="col-1" scope="row" th:text="${orderTeste.id}"></th>
+                    <th class="col-1" scope="row" th:text="${orderTeste.Quantity}"></th>
+                    <th class="col-1" scope="row" th:text="${orderTeste.totalAmount}"></th>
+                    <th class="col-1" scope="row" th:text="${orderTeste.creationDate}"></th>
+                    <!--th class="col-1" scope="row" th:text="${order.customer.id}"></th>
                     <td class="col-1"><a th:href="@{/customers/{customerDTOId}(customerDTOId = ${customerDTO.id})}">Detalhes<a/></td>
                     <td class="col-1"><a th:href="@{/customers/{customerDTOId}/edit(customerDTOId = ${customerDTO.id})}">Editar<a/></td>
-                    <td class="col-1"><a th:href="@{/customers/{customerDTOId}/delete(customerDTOId = ${customerDTO.id})}">Deletar<a/></td>
+                    <td class="col-1"><a th:href="@{/customers/{customerDTOId}/delete(customerDTOId = ${customerDTO.id})}">Deletar<a/></td-->
                 </tr>
                 </tbody>
             </table>

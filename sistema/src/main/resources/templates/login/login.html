@@ -1,0 +1,44 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
+
+  <title>Login</title>
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <h1>Login</h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+         <td>Digite o e-mail</td>  <form action="/login" method="POST">
+        <div class="mb-3">
+          <!--label class="form-label">Digite o e-mail</label-->
+          <input class="form-control" type="text" name="email">
+          <!--input class="form-control" type="text" th:field="*{email}"-->
+          <input class="invalid-feedback" th:errors="*{email}">
+        </div>
+
+        <td class="col-1"><a th:href="@{/customers/{customerDTOEmail}(customerDTOEmail = ${customerDTO.email})}"><a/></td>
+
+        <button class="btn btn-primary" type="submit">Ok</button>
+        <!--a href="javascript:history.back()">Voltar</a-->
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"/>
+
+</body>
+</html>
