@@ -1,0 +1,33 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+
+    <title>Opcoes</title>
+</head>
+
+<body>
+
+<!--p><a href="/customers">cliente</a></p>
+<a-- href="/orders">compras</a-->
+
+<main>
+    <div class="container mt-4">
+        <div class="list-group">
+            <button type="button" class="list-group-item list-group-item-action"
+                    th:onclick="'window.location.href=\'/customers\''">Clientes</button>
+            <button type="button" class="list-group-item list-group-item-action"
+                    th:onclick="'window.location.href=\'/orders\''">compras</button>
+        </div>
+    </div>
+</main>
+</body>
+</html>

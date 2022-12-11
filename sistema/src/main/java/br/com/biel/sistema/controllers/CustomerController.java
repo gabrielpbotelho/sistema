@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -33,9 +32,8 @@ public class CustomerController {
     }
 
     @GetMapping ("/{id}")
-    public ModelAndView details(@PathVariable Integer id, HttpSession session) {
+    public ModelAndView details(@PathVariable Integer id) {
 
-        System.out.println(session);
         Optional<Customer> customer = this.customerRepository.findById(id);
         CustomerDTO customerDTO = Customer.toCustomerDTO(customer.get());
         System.out.println(customerDTO.getId());
@@ -97,6 +95,7 @@ public class CustomerController {
     @PutMapping
     public String updateCustomer(CustomerDTO customerDTO) {
         System.out.println(customerDTO);
+        System.out.println("Passandono updateCustomer");
         Customer customer = CustomerDTO.toCustomer(customerDTO);
         customerRepository.save(customer);
         return "redirect:/customers";

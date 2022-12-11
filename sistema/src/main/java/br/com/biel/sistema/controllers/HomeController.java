@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
-    @GetMapping("/")
+    @GetMapping
     public String home() {
-        return "home"; //renderiza o arquivo templates/home.html
+        System.out.println("Passou no lugar rrr");
+        return "login"; //renderiza o arquivo templates/home.html
     }
 }
+
